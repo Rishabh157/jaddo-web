@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-white relative overflow-hidden">
       {/* Background Decoration - spans behind both Navbar and Hero */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] lg:w-[691px] lg:h-[787px] z-0 pointer-events-none">
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] lg:w-[691px] lg:h-[787px] z-0 pointer-events-none">
         <Image
           src="/images/Decore.png"
           alt=""

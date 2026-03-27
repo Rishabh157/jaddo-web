@@ -1,96 +1,95 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <nav className="w-full flex items-center justify-between px-6 md:px-16 lg:px-28 py-6 lg:py-8 relative z-20">
-      {/* Logo */}
-      <div className="flex items-center gap-1">
-        <Image
-          src="/images/Logo.svg"
-          alt="Jadoo Logo"
-          width={104}
-          height={31}
-          className="object-contain"
-          priority
-        />
+    <nav className="w-full relative z-50">
+      <div className="flex items-center justify-between px-6 md:px-16 lg:px-28 py-6 lg:py-8">
+        {/* Logo */}
+        <div className="flex items-center gap-1">
+          <Image
+            src="/images/Logo.svg"
+            alt="Jadoo Logo"
+            width={104}
+            height={31}
+            className="object-contain"
+            priority
+          />
+        </div>
+
+        {/* Nav Links and Right Side - grouped together with consistent gap */}
+        <div className="hidden lg:flex items-center gap-14 text-[#212832] font-google-sans text-[17px]">
+          <ul className="flex items-center gap-10">
+            <li>
+              <a href="#" className="hover:text-primary font-medium transition-colors duration-200">
+                Desitnations
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-primary font-medium transition-colors duration-200">
+                Hotels
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-primary font-medium transition-colors duration-200">
+                Flights
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-primary font-medium transition-colors duration-200">
+                Bookings
+              </a>
+            </li>
+          </ul>
+
+          {/* Right Action Items */}
+          <div className="flex items-center gap-10">
+            <a href="#" className="text-[#212832] font-medium hover:text-primary transition-colors duration-200">
+              Login
+            </a>
+            <a href="#" className="border border-[#212832] font-medium rounded-md px-6 py-2 text-[#212832] hover:bg-[#212832] hover:text-white transition-all duration-200">
+              Sign up
+            </a>
+            <div className="flex items-center gap-1 font-medium cursor-pointer">
+              EN
+              <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu Icon */}
+        <button
+          className="lg:hidden flex flex-col gap-1.5 p-2"
+          aria-label="Toggle menu"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <span className={`w-6 h-0.5 bg-navy rounded-full transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+          <span className={`w-6 h-0.5 bg-navy rounded-full transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`w-6 h-0.5 bg-navy rounded-full transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+        </button>
       </div>
 
-      {/* Nav Links and Right Side - grouped together with consistent gap */}
-      <div className="hidden lg:flex items-center gap-14 text-[#212832] font-google-sans text-[17px]">
-        <ul className="flex items-center gap-10">
-          <li>
-            <a
-              href="#"
-              className="hover:text-primary font-medium transition-colors duration-200"
-            >
-              Desitnations
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="hover:text-primary font-medium transition-colors duration-200"
-            >
-              Hotels
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="hover:text-primary font-medium transition-colors duration-200"
-            >
-              Flights
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="hover:text-primary font-medium transition-colors duration-200"
-            >
-              Bookings
-            </a>
-          </li>
-        </ul>
-
-        {/* Right Action Items */}
-        <div className="flex items-center gap-10">
-          <a
-            href="#"
-            className="text-[#212832] font-medium hover:text-primary transition-colors duration-200"
-          >
-            Login
-          </a>
-          <a
-            href="#"
-            className="border border-[#212832] font-medium rounded-md px-6 py-2 text-[#212832] hover:bg-[#212832] hover:text-white transition-all duration-200"
-          >
-            Sign up
-          </a>
-          <div className="flex items-center gap-1 font-medium cursor-pointer">
-            EN
-            <svg
-              className="w-3 h-3 ml-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+      {/* Mobile Menu Overlay */}
+      <div className={`lg:hidden fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="flex flex-col items-center justify-center h-full gap-8 px-6 text-xl font-google-sans text-[#212832]">
+          <ul className="flex flex-col items-center gap-6">
+            <li><a href="#" onClick={() => setIsOpen(false)} className="hover:text-primary font-medium">Desitnations</a></li>
+            <li><a href="#" onClick={() => setIsOpen(false)} className="hover:text-primary font-medium">Hotels</a></li>
+            <li><a href="#" onClick={() => setIsOpen(false)} className="hover:text-primary font-medium">Flights</a></li>
+            <li><a href="#" onClick={() => setIsOpen(false)} className="hover:text-primary font-medium">Bookings</a></li>
+          </ul>
+          <div className="flex flex-col items-center gap-6 mt-4 pt-8 border-t border-gray-100 w-full">
+            <a href="#" onClick={() => setIsOpen(false)} className="font-medium hover:text-primary">Login</a>
+            <a href="#" onClick={() => setIsOpen(false)} className="border border-[#212832] font-medium rounded-md px-10 py-3 text-[#212832] hover:bg-[#212832] hover:text-white transition-all duration-200">Sign up</a>
           </div>
         </div>
       </div>
-
-      {/* Mobile Menu Icon */}
-      <button className="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
-        <span className="w-6 h-0.5 bg-navy rounded-full"></span>
-        <span className="w-6 h-0.5 bg-navy rounded-full"></span>
-        <span className="w-6 h-0.5 bg-navy rounded-full"></span>
-      </button>
     </nav>
   );
 }
