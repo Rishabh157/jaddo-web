@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Poppins:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #ffffff;
+  --color-foreground: #14183E;
+  --color-primary: #F1A501;
+  --color-secondary: #DF6951;
+  --color-navy: #181E4B;
+  --color-gray-text: #5E6282;
+  --color-light-bg: #FFF1DA;
+  --font-volkhov: var(--font-volkhov);
+  --font-google-sans: "Google Sans", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  overflow-x: hidden;
+  font-family: var(--font-google-sans);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
