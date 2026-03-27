@@ -9,9 +9,9 @@ const volkhov = Volkhov({
 });
 
 export const metadata: Metadata = {
-  title: "Jadoo - Best Destinations Around The World",
+  title: "Jadoo - Best Destinations App",
   description:
-    "Travel, enjoy and live a new and full life with Jadoo. Discover the best destinations around the world.",
+    "Travel, enjoy and live",
 };
 
 export default function RootLayout({
